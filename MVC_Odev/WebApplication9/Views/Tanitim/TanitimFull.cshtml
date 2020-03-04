@@ -1,0 +1,29 @@
+﻿@model List<Tanitim>
+@{
+    ViewBag.Title = "TanitimFull";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@foreach(var item in Model)
+{ 
+<div class="row">
+    <!-- Blog Post Content Column -->
+    <div class="col-lg-8">
+        <!-- Blog Post -->
+        <hr>
+        <!-- Date/Time -->
+        <p><i class="fa fa-clock-o"></i> @item.KonuTarihi</p>
+        <hr>
+        <!-- Preview Image -->
+        <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+        <hr>
+        <!-- Post Content -->
+        <p class="lead">
+            @item.KonuIcerigi
+            </p>
+        <hr>
+        <!-- Blog Comments -->
+        <!-- Comments Form -->
+
+    </div>
+</div>
+}

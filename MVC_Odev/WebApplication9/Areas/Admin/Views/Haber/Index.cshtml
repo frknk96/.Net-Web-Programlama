@@ -1,0 +1,48 @@
+﻿@model List<Haber>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<br /><br /><br />
+<div class="col-lg-10">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Haber Listesi
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            
+                            <th>HaberID</th>
+                            <th>Haber Başlığı</th>
+                            <th>Haber İçeriği</th>
+                            <th>Resim Yolu</th>
+                            <th>Eklenme Tarihi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var item in Model)
+                        { 
+                        <tr class="success">
+                           
+                            <td>@item.ID</td>
+                            <td>@item.HaberBasligi</td>
+                            <td>@item.HaberIcerigi</td>
+                            <td>@item.ResimYolu</td>
+                            <td>@item.EklenmeTarihi</td>
+                            <td><a class="btn btn-default" href="@Url.Action("Edit", "Haber", new { id = item.ID },null)" role="button">Düzenle</a> | <a class="btn btn-default" href="@Url.Action("Delete","Haber",new { id = item.ID },null)" role="button">Sil</a></td>
+                        </tr>
+                        }
+                       
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.table-responsive -->
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
+</div>

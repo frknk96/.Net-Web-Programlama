@@ -1,0 +1,90 @@
+﻿@model WebApplication9.Tanıtım
+
+@{
+    ViewBag.Title = "Detay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br /><br />
+<div class="row">
+    
+    <div class="col-lg-8">
+        <!-- Blog Post -->
+        <hr>
+        <p><span class="label label-default">@Html.DisplayFor(model => model.KonuAdi)</span></p>
+            <!-- Date/Time -->
+<p><i class="fa fa-clock-o"></i> Gönderi Tarihi : @Html.DisplayFor(model => model.KonuTarihi)</p>
+        <hr>
+        <!-- Preview Image -->
+        <img class="img-responsive" src="@Html.DisplayFor(model=>model.ResimYolu)" alt="">
+        <hr>
+        <!-- Post Content -->
+        <p class="lead">@Html.DisplayFor(model => model.KonuIcerik)</p>
+        <hr>
+        @if (Session["uyeid"] != null)
+        {
+            <div class="well">
+                <h4>Yorum Yap:</h4>
+                <form role="form">
+                    <div class="form-group">
+                        <textarea id="yorum" typeof="text" class="form-control" rows="3"></textarea>
+                    </div>
+                    <button type="submit" id="gonder" class="btn btn-primary">Gönder</button>
+                </form>
+            </div>
+        }
+        else
+        {
+            <h2>Konuya yorum yapmak için giriş yapmalısınız</h2>
+            <p><a href="/Uye/Login/">Giriş Yap</a></p>
+            <p><a href="/Uye/Create/">Kaydol</a></p>
+        }
+        <div class="media">
+            @foreach (var item in Model.Yorum1.ToList())
+            {
+                <a class="pull-left" href="#">
+                    <img class="media-object" src="http://placehold.it/64x64" alt="@item.Uye.AdSoyad" />
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading">
+                        @item.Uye.KullaniciAdi
+                        <small>@item.YorumTarihi</small>
+                    </h4>
+                    @item.YorumIcerik - @if(Convert.ToInt32(Session["uyeid"])==item.UyeId)
+                                        {
+                                            <a class="btn btn-danger" href="/Home/YorumSil/">Sil</a>
+                                        }
+                </div>
+            }
+           
+        </div>
+        
+        <hr />
+    </div>
+</div>
+<script src="~/Content/js/jquery.js"></script>
+<script src="~/Content/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $("#gonder").click(function(){
+        alert("Deneme123");
+    })
+</script>
+@*<script type="text/javascript">
+    $(document).ready(function(){
+        $("#gonder").click(function(){
+            var yorumunuz=$("#yorum").val();
+            $.ajax({
+                url: '/Home/YorumYap/',
+                data: { yorum: yorumunuz, konuId:@Model.ID},
+                type:'POST',
+                dataType:'json',
+                success:function(data){
+                    alert("Yorum Gönderildi" + yorumunuz);}
+            });
+        });
+    });
+</script>*@
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

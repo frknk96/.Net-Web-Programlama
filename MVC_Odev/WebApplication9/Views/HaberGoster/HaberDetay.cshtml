@@ -1,0 +1,57 @@
+﻿@model WebApplication9.Haber
+
+@{
+    ViewBag.Title = "HaberDetay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br /><br />
+<div class="row">
+    <!-- Blog Post Content Column -->
+    @*<div class="col-lg-8">
+         <!-- Blog Post -->
+         <hr>
+         <p><span class="label label-default">@Html.DisplayFor(model => model.KonuAdi)</span></p>
+         <!-- Date/Time -->
+        <p><i class="fa fa-clock-o"></i>@Html.DisplayFor(model => model.KonuTarihi) </p>
+
+         <hr>
+         <!-- Preview Image -->
+         <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+         <hr>
+         <!-- Post Content -->
+         <p class="lead">
+             <span>Konu İçeriği : </span>@Html.DisplayFor(model => model.KonuIcerik)
+         </p>
+         <hr>
+         <!-- Blog Comments -->
+         <!-- Comments Form -->*@
+    <div class="col-lg-8">
+        <!-- Blog Post -->
+        <hr>
+        <p><span class="label label-default">@Html.DisplayFor(model => model.HaberBasligi)</span></p>
+        <!-- Date/Time -->
+        <p><i class="fa fa-clock-o"></i> Gönderi Tarihi : @Html.DisplayFor(model => model.EklenmeTarihi)</p>
+        <hr>
+        <!-- Preview Image -->
+        <img class="img-responsive" src="@Html.DisplayFor(model=>model.ResimYolu)" alt="">
+        <hr>
+        <!-- Post Content -->
+        <p class="lead">@Html.DisplayFor(model => model.HaberIcerigi)</p>
+        <hr>
+        <div class="well">
+            <h4>Yorum Yap:</h4>
+            <form role="form">
+                <div class="form-group">
+                    <textarea class="form-control" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Gönder</button>
+            </form>
+        </div>
+        <hr />
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

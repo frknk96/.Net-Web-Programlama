@@ -1,0 +1,16 @@
+﻿@model WebApplication9.Haber
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Delete</h2>
+@Model.HaberBasligi 
+<h4>
+    <span class="label label-danger">başlıklı konuyu silmek istediğinizden emin misiniz?</span>
+</h4>
+<br />
+<h6><a class="btn btn-success" href="@Url.Action("DeleteConfirm", "Haber", new { id = Model.ID })" role="button">Kabul Ediyorum</a><a class="btn btn-primary" href="@Url.Action("Index","Haber") role="button">Kabul etmiyorum</a></h6>
+
+

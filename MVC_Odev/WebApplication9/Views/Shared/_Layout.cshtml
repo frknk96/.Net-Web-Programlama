@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="footer, address, phone, icons" />
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/demo.css")
+    @Styles.Render("~/Content/header-login-signup.css")
+    @Styles.Render("~/Content/footer-distributed-with-address-and-phones.css")
+    <link rel="stylesheet" href="assets/demo.css">
+    <link rel="stylesheet" href="assets/header-login-signup.css">
+    <link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
+
+
+</head>
+
+
+<body>
+    @*<header class="header-login-signup">
+        <div class="header-limiter">
+            <h1><a href="#">oyuntanitimi<span>.com</span></a></h1>
+            <nav>
+                @Html.ActionLink("Ana Sayfa","Index","Home")
+                @Html.ActionLink("İletişim","Contact","Home")
+                @Html.ActionLink("Hakkında","About","Home")
+            </nav>
+            
+        </div>
+        @Html.Partial("_LoginPartial")
+    </header>*@
+    <header>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("oyuntanitimi.com", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Ana Sayfa", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Hakkımızda", "About", "Home")</li>
+
+                        <li>@Html.ActionLink("İletişim", "Contact", "Home")</li>
+                        @if (Session["uyeid"] != null)
+                        {
+                            <li><a href="/Uye/Index/@Session["uyeid"]">@Session["kullaniciadi"].ToString()</a></li>
+                            <li><a href="/Uye/Logout">Çıkış</a></li>
+                            if (Convert.ToInt32(Session["yetkiid"]) == 1)
+                            {
+                               
+                                <li><a href="/Admin/AdminHome/Index">Admin Paneli</a></li>
+                                     @*@Html.ActionLink("Admin Paneli", "Index", "AdminHome", new { area = "" }, new { })*@
+                                
+                            }
+                        }
+                        else
+                        {
+                            <li><a href="/Uye/Login">Giriş</a></li>
+                        }
+                        
+                    </ul>
+                    <div class="nav navbar-nav navbar-right col-md-4">
+                        <p></p>
+                        <div class="col-md-3">
+                            <div class="dropdown">
+                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">TR <span class="caret"></span></button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                   
+                                     <li><a href="#">EN</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p></p>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </header>
+           
+    
+            <div class="container body-content">
+                
+                <hr />
+                @RenderBody()
+                <footer class="footer-distributed">
+                    <div class="footer-left">
+                        <h3>oyuntanitimi<span>.com</span></h3>
+                        <p class="footer-links">
+                            <a href="#">Ana Sayfa</a>
+                            -
+                            <a href="#">İletişim</a>
+                            -
+                            <a href="#">Hakkında</a>
+                            -
+                            <a href="#">Forum</a>
+                            -
+                            <a href="#">Oyun Tanıtımları</a>
+                            -
+                            
+                        </p>
+                        <p class="footer-company-name">oyuntanitimi.com &copy; @DateTime.Now.Year</p>
+                    </div>
+                    <div class="footer-center">
+                        <div>
+                            <i class="fa fa-map-marker"></i>
+                            <p><span>Sakarya Üniversitesi Bilgisayar ve Bilişim Fakültesi</span> Sakarya, TURKEY</p>
+                        </div>
+                        <div>
+                            <i class="fa fa-phone"></i>
+                            <p>+1 555 123456</p>
+                        </div>
+                        <div>
+                            <i class="fa fa-envelope"></i>
+                            <p><a href="mailto:support@company.com">furkan.kadirogullari@ogr.sakarya.edu.tr</a></p>
+                        </div>
+                    </div>
+                    <div class="footer-right">
+                        <p class="footer-company-about">
+                            <span>Site Hakkında</span>
+                            Bu proje oyun severlerin buluştuğu ortak bir platformdur.
+                        </p>
+                    
+                    </div>
+                </footer>
+                @*<footer>
+                    <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+                </footer>*@
+            </div>
+
+            @Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/bootstrap")
+            @RenderSection("scripts", required: false)
+</body>
+</html>

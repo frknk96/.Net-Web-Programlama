@@ -1,0 +1,70 @@
+﻿@model WebApplication9.Areas.Admin.Models.HaberModel
+
+@{
+    ViewBag.Title = "HaberEkle";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br /><br /><br />
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h4>Admin Paneli</h4>
+            </div>
+            @using (Html.BeginForm("Addhaber", "Haber", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+            {
+                <div class="panel-body">
+                    <h3>Yeni Haber Ekleme</h3>
+
+                    <br />
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.HaberBasligi, new { @class = "col-sm-3 control-label" })
+                        <div class="col-sm-6">
+                            @Html.TextBoxFor(m => m.HaberBasligi, new { @class = "form-control", placeholder = "Haber Başlığı" })
+                        </div>
+                        <div class="col-sm-3">
+
+                        </div>
+                    </div>
+
+                    
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.HaberIcerigi, new { @class = "col-sm-3 control-label" })
+                        <div class="col-sm-6">
+                            @Html.TextAreaFor(m => m.HaberIcerigi, new { @class = "form-control", placeholder = "Haber İçeriği"})
+                        </div>
+                        <div class="col-sm-3">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.HaberResim, new { @class = "col-sm-3 control-label" })
+                        <div class="col-sm-6">
+                            @Html.TextBoxFor(m => m.HaberResim, new { @class = "form-control", placeholder = "Resim Yolu", type = "file" })
+                        </div>
+                        <div class="col-sm-3">
+
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <div class="btn-toolbar">
+                                <button class="btn-primary btn">Submit</button>
+                                <button class="btn-default btn">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

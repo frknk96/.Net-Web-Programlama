@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br /><br /><br />
+<div class="row">
+    <div class="col-lg-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Admin Paneli
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+
+                        <tbody>
+                            <tr class="success">
+                                <td>Haber</td>
+                                <td><a class="btn btn-success" href="@Url.Action("HaberEkle","Haber")" role="button">Ekle</a></td>
+                                <td><a class="btn btn-primary" href="@Url.Action("Index","Haber")" role="button">Düzenle</a></td>
+                                <td><a class="btn btn-danger" href="@Url.Action("Index","Haber")" role="button">Sil</a></td>
+                            </tr>
+                            <tr class="primary">
+                                <td>Slider</td>
+                                <td><a class="btn btn-success" href="@Url.Action("SliderEkle","Slider")" role="button">Ekle</a></td>
+                                <td>Düzenle</td>
+                                <td>Sil</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+</div>
+

@@ -1,0 +1,130 @@
+﻿@{
+    if ((Convert.ToInt32(Session["yetkiid"]) != 1 && Convert.ToInt32(Session["yetkiid"]) != 2) || Session["yetkiid"]==null)
+    {
+        Response.Redirect("~/Uye/Login");
+    }
+}
+@model WebApplication9.Models.TanıtımModel
+
+@{
+    ViewBag.Title = "TanitimEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br /><br /><br /><br />
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h4>Konu Ekle</h4>
+            </div>
+            @using (Html.BeginForm("AddTanitim", "Tanitim", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+            {
+                <div class="panel-body">
+                    <h3>Yeni Konu Ekleme</h3>
+
+                    <br />
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.KonuAdi, new { @class = "col-sm-3 control-label" })
+                        <div class="col-sm-6">
+                            @Html.TextBoxFor(m => m.KonuAdi, new { @class = "form-control", placeholder = "Konu Başlığı" })
+                        </div>
+                        <div class="col-sm-3">
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.KonuIcerik, new { @class = "col-sm-3 control-label" })
+                        <div class="col-sm-6">
+                            @Html.TextAreaFor(m => m.KonuIcerik, new { @class = "form-control", placeholder = "Konu İçeriği" })
+                        </div>
+                        <div class="col-sm-3">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.TanıtımResim, new { @class = "col-sm-3 control-label" })
+                        <div class="col-sm-6">
+                            @Html.TextBoxFor(m => m.TanıtımResim, new { @class = "form-control", placeholder = "Resim Yolu", type = "file" })
+                        </div>
+                        <div class="col-sm-3">
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FKKategoriID, "FKKategoriID", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-sm-6">
+                            @Html.DropDownList("FKKategoriID", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.FKKategoriID, "", new { @class = "text-danger" })
+                            <div class="col-sm-3">
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <div class="btn-toolbar">
+                                <button class="btn-primary btn">Submit</button>
+                                <button class="btn-default btn">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@*@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4><span class="label label-info">Tanıtım Ekle</span></h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+              @Html.LabelFor(model => model.KonuAdi, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.KonuAdi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.KonuAdi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+       
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.KonuIcerik, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.KonuIcerik, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.KonuIcerik, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FKKategoriID, "FKKategoriID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("FKKategoriID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.FKKategoriID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@

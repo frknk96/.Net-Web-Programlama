@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="181a73d1714944f591b42589878e05f0" Name="Diagram1">
+        <EntityTypeShape EntityType="YAZODEVModel.Kategori" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="YAZODEVModel.Tanıtım" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="YAZODEVModel.Yorum" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="YAZODEVModel.FK_Tanıtım_Tanıtım" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="YAZODEVModel.Haber" Width="1.5" PointX="3.375" PointY="4.75" />
+        <EntityTypeShape EntityType="YAZODEVModel.Slider" Width="1.5" PointX="5.375" PointY="0.75" />
+        <AssociationConnector Association="YAZODEVModel.FK_Yorum_Tanıtım" ManuallyRouted="true" >
+          <ConnectorPoint PointX="3.15625" PointY="4.201396484375" />
+          <ConnectorPoint PointX="3.15625" PointY="7.1461393229166656" />
+          <ConnectorPoint PointX="2.25" PointY="7.1461393229166656" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="YAZODEVModel.sysdiagrams" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="YAZODEVModel.Uye" Width="1.5" PointX="7.625" PointY="4" />
+        <EntityTypeShape EntityType="YAZODEVModel.Yetki" Width="1.5" PointX="5.375" PointY="4.375" />
+        <AssociationConnector Association="YAZODEVModel.FK_Yorum_Tanıtım1" />
+        <AssociationConnector Association="YAZODEVModel.FK_Uye_Yetki" />
+        <AssociationConnector Association="YAZODEVModel.FK_Yorum_Uye" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,98 @@
+﻿@model List<Tanıtım>
+@{
+    ViewBag.Title = "IndexTanitim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br /><br />
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8">
+            <h1 class="page-header">
+                Oyun Tanıtımı
+                <small>Kullanıcı Gönderileri</small>
+                <p class="lead"></p>
+                @using (Html.BeginForm())
+                {
+                    <input type="text" class="form-control" id="konuAdi" name="konuAdi" placeholder="Konu Ara" />
+                    
+                    @Html.DropDownList("Kategoriler", "Kategori Seçin")
+    <input class="btn btn-danger" type="submit" value="ARA" />
+
+                }
+            </h1>
+
+            <ol class="breadcrumb">
+                <li>
+                    <a href="@Url.Action("Index","Home")">Ana Sayfa</a>
+                </li>
+                <li class="active">Oyun Tanıtımları</li>
+            </ol>
+
+        </div>
+
+    </div>
+
+
+    @foreach (var item in Model)
+    {
+        @*<div class="row">
+                    <!-- Blog Entries Column -->
+                    <div class="col-md-8">
+                        <!-- First Blog Post -->
+
+                        <h2>
+                            <a href="@Url.Action("Detay", "Tanitim", new { id = item.ID })">@item.KonuAdi</a>
+                        </h2>
+                        <p class="lead">
+
+                        </p>
+                        <p><i class="fa fa-clock-o"></i> Gönderi Tarihi @item.KonuTarihi</p>
+                        <a href="@Url.Action("Detay", "Tanitim", new { id = item.ID })">
+                            <img class="img-responsive img-hover" src="http://placehold.it/900x300" alt="">
+                            <p></p>
+                            <a class="btn btn-primary" href="@Url.Action("Detay", "Tanitim", new { id = item.ID })">Konuya Git <i class="fa fa-angle-right"></i></a>
+                        </a>
+                        <hr>
+                  </div>
+            </div>*@
+
+
+        <!-- /.row -->
+        <!-- Blog Post Row -->
+        <div class="row">
+            <br /><br />
+            <div class="col-md-1 text-center">
+                <p>
+                    <i class="fa fa-camera fa-4x"></i>
+                </p>
+                <p>Gönderi Tarihi @item.KonuTarihi</p>
+            </div>
+            <div class="col-md-5">
+                <a href="@Url.Action("Detay", "Tanitim", new { id = item.ID })">
+                    <img class="img-responsive img-hover" src="@item.ResimYolu" alt="">
+                </a>
+            </div>
+            <div class="col-md-6">
+                <h3>
+                    <a href="@Url.Action("Detay", "Tanitim", new { id = item.ID })">@item.KonuAdi</a>
+                </h3>
+                <p>
+                    by <a href="#">Start Bootstrap</a>
+                </p>
+                <p></p>
+                <a class="btn btn-primary" href="@Url.Action("Detay", "Tanitim", new { id = item.ID })">Konuya Git <i class="fa fa-angle-right"></i></a>
+            </div>
+        </div>
+
+    }
+    <!-- Pager -->
+    <ul class="pager">
+        <li class="previous">
+            <a href="#">&larr; Onceki</a>
+        </li>
+        <li class="next">
+            <a href="#">Sonraki &rarr;</a>
+        </li>
+    </ul>
+
+   </div>

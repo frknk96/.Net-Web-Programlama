@@ -1,0 +1,167 @@
+﻿@model List<Haber>
+
+@{
+    ViewBag.Title = "Home Page";
+    
+}
+<!DOCTYPE html>
+<html lang="en">            
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>Shop Homepage - Start Bootstrap Template</title>
+<!-- Bootstrap Core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<!-- Custom CSS -->
+<link href="css/shop-homepage.css" rel="stylesheet">
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+<body>
+    <br /><br /><br /><br /><br />
+    
+        <div class="row">
+
+            <div class="col-md-8">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        @{Html.RenderAction("_Slider", "Home");}
+
+                    </div>
+                    </div>
+            </div>
+                    <div class="col-md-4">
+
+
+                        <div class="list-group">
+                            <a href="@Url.Action("IndexHaber","HaberGoster")" class="list-group-item">Oyun Haberleri</a>
+                            <a href="@Url.Action("IndexTanitim","Tanitim")" class="list-group-item">Oyun Tanıtımları</a>
+                            <a href="@Url.Action("TanitimEkle","Tanitim")" class="list-group-item">Oyun Tanıt</a>
+                        </div>
+
+                    </div>
+
+                </div>
+                <p></p><p></p>
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+
+                        <div class="col-sm-4 col-lg-4 col-md-4">
+                            <div class="thumbnail">
+                                <img src="@item.ResimYolu" alt="">
+                                <div class="caption">
+                                    <h4 class="pull-right">Gönderi Tarihi : @item.EklenmeTarihi</h4>
+                                    <h4>
+                                        <a href="@Url.Action("HaberDetay", "HaberGoster", new { id = item.ID })">@item.HaberBasligi</a>
+                                    </h4>
+                                    
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+                    @*<div class="col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Haberler</div>
+                            <div class="panel-body">
+                                <div class="blog-list-post clearfix">
+                                    <div class="blog-list-thumb">
+                                        <a href="blog-single.html"><img src="http://placehold.it/65x65" alt=""></a>
+
+                                    </div>
+                                    <div class="blog-list-details">
+                                        <h5 class="blog-list-title"><a href="blog-single.html">asdasdas</a></h5>
+                                        <p class="blog-list-meta small-text">Eklenme Tarihi : 14.07.2017 23:48:50</p>
+                                    </div>
+                                </div>
+
+                                <div class="blog-list-post clearfix">
+                                    <div class="blog-list-thumb">
+                                        <a href="blog-single.html"><img src="http://placehold.it/65x65" alt=""></a>
+                                    </div>
+                                    <div class="blog-list-details">
+                                        <h5 class="blog-list-title"><a href="blog-single.html">adfsdgsdgs</a></h5>
+                                        <p class="blog-list-meta small-text">Eklenme Tarihi : 14.07.2017 23:47:41</p>
+                                    </div>
+                                </div>
+
+                                <div class="blog-list-post clearfix">
+                                    <div class="blog-list-thumb">
+                                        <a href="blog-single.html"><img src="http://placehold.it/65x65" alt=""></a>
+                                    </div>
+                                    <div class="blog-list-details">
+                                        <h5 class="blog-list-title"><a href="blog-single.html">sdgdfhfdsgfd</a></h5>
+                                        <p class="blog-list-meta small-text">Eklenme Tarihi : 14.07.2017 23:46:34</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-footer text-center">
+                                <button type="button" class="btn btn-primary">Tüm Haberler</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Oyun Tanıtımları</div>
+                            <div class="panel-body">
+                               @{int i = 0;}
+                                @foreach (var item in Model)
+                                {
+
+                                    if(i<3)
+                                    {
+                                    <div class="blog-list-post clearfix">
+                                        <div class="blog-list-thumb">
+                                            <a href="blog-single.html"><img src="http://placehold.it/65x65" alt=""></a>
+                                        </div>
+                                        <div class="blog-list-details">
+                                            <h5 class="blog-list-title"><a href="@Url.Action("Detay", "Tanitim", new { id = item.ID })">@item.KonuAdi</a></h5>
+                                            <p class="blog-list-meta small-text">Gönderi Tarihi : @item.KonuTarihi
+                                        </div>
+                                    </div>
+                                    }
+                                    i++;
+                                }
+                                <div class="panel-footer text-center">
+                                    <a class="btn btn-primary" href="@Url.Action("IndexTanitim","Tanitim")" role="button">Tüm Tanıtımlar</a>
+                                </div>
+                                <p>________________________________________</p>
+                                <div class="blog-list-post clearfix">
+                                    <div class="blog-list-thumb">
+                                        <a href="blog-single.html"><img src="http://placehold.it/65x65" alt=""></a>
+                                    </div>
+                                    <div class="blog-list-details">
+                                        <h5 class="blog-list-title"><a href="blog-single.html">Visiting Artists: Giles Bailey</a></h5>
+                                        <p class="blog-list-meta small-text"><span><a href="#">12 January 2014</a></span> with <span><a href="#">3 comments</a></span></p>
+                                    </div>
+                                </div>
+                                <p>________________________________________</p>
+                                <div class="blog-list-post clearfix">
+                                    <div class="blog-list-thumb">
+                                        <a href="blog-single.html"><img src="http://placehold.it/65x65" alt=""></a>
+                                    </div>
+                                    <div class="blog-list-details">
+                                        <h5 class="blog-list-title"><a href="blog-single.html">Workshop: Theories of the Image</a></h5>
+                                        <p class="blog-list-meta small-text"><span><a href="#">12 January 2014</a></span> with <span><a href="#">3 comments</a></span></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-footer text-center">
+                                <button type="button" class="btn btn-primary">Tüm Tanıtımlar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+                </div>
+
+</body>
+<!-- /.container -->
+</html>
